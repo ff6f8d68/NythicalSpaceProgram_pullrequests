@@ -2,7 +2,9 @@ package com.nythicalnorm.nythicalSpaceProgram.block;
 
 import com.nythicalnorm.nythicalSpaceProgram.Item.ModItems;
 import com.nythicalnorm.nythicalSpaceProgram.NythicalSpaceProgram;
+import com.nythicalnorm.nythicalSpaceProgram.block.custom.CryogenicAirSeparator;
 import com.nythicalnorm.nythicalSpaceProgram.block.custom.FootprintedRegolith;
+import com.nythicalnorm.nythicalSpaceProgram.block.custom.Magnetizer;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -25,6 +27,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> LUNAR_REGOLITH = registerBlock("lunar_regolith",
             () -> new FootprintedRegolith(BlockBehaviour.Properties.copy(Blocks.NETHERRACK).sound(SoundType.POWDER_SNOW).destroyTime(2f)));
 
+    public static final RegistryObject<Block> CRYOGENIC_AIR_SEPARATOR = registerBlock("cryogenic_air_separator",
+            () -> new CryogenicAirSeparator(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.COPPER).noOcclusion()));
+
+    public static final RegistryObject<Block> MAGNETIZER = registerBlock("magnetizer",
+            () -> new Magnetizer(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.COPPER).noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name,block);

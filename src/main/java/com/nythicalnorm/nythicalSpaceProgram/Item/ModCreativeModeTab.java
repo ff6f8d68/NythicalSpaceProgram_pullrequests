@@ -22,6 +22,9 @@ public class ModCreativeModeTab {
                         output.accept(ModItems.MAGNET_BOOTS.get());
                         output.accept(ModBlocks.OXYGEN_PROPELLANT_TANK.get());
                         output.accept(ModBlocks.LUNAR_REGOLITH.get());
+
+                        output.accept(ModBlocks.CRYOGENIC_AIR_SEPARATOR.get());
+                        output.accept(ModBlocks.MAGNETIZER.get());
                     })
                     .build());
 
