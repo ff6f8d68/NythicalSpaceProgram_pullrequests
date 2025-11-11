@@ -107,7 +107,7 @@ public class MagnetizerRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public void toNetwork(FriendlyByteBuf pBuffer, MagnetizerRecipe pRecipe) {
-            pBuffer.writeInt(pRecipe.inputItems.size());
+            pBuffer.writeInt(pRecipe.getIngredients().size());
             for (Ingredient ing : pRecipe.getIngredients()) {
                 ing.toNetwork(pBuffer);
             }

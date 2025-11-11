@@ -1,9 +1,11 @@
 package com.nythicalnorm.nythicalSpaceProgram.datagen.loot;
 
 import com.nythicalnorm.nythicalSpaceProgram.block.ModBlocks;
+import com.nythicalnorm.nythicalSpaceProgram.fluid.ModFluids;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Set;
@@ -20,6 +22,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.MAGNETIZED_IRON_BLOCK.get());
         this.dropSelf(ModBlocks.CRYOGENIC_AIR_SEPARATOR.get());
         this.dropSelf(ModBlocks.MAGNETIZER.get());
+        this.dropOther(ModFluids.LIQUID_OXYGEN.block.get(), Blocks.AIR);
     }
 
     @Override

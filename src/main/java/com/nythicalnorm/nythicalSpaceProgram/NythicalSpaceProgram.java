@@ -5,7 +5,9 @@ import com.nythicalnorm.nythicalSpaceProgram.Item.ModCreativeModeTab;
 import com.nythicalnorm.nythicalSpaceProgram.Item.ModItems;
 import com.nythicalnorm.nythicalSpaceProgram.block.ModBlocks;
 import com.nythicalnorm.nythicalSpaceProgram.block.entity.ModBlockEntities;
+import com.nythicalnorm.nythicalSpaceProgram.fluid.ModFluids;
 import com.nythicalnorm.nythicalSpaceProgram.recipe.ModRecipes;
+import com.nythicalnorm.nythicalSpaceProgram.screen.CryogenicAirSeparatorScreen;
 import com.nythicalnorm.nythicalSpaceProgram.screen.MagnetizerScreen;
 import com.nythicalnorm.nythicalSpaceProgram.screen.ModMenuTypes;
 import com.nythicalnorm.nythicalSpaceProgram.sound.ModSounds;
@@ -41,6 +43,8 @@ public class NythicalSpaceProgram
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
+        ModFluids.FLUID_TYPES.register(modEventBus);
+        ModFluids.FLUIDS.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -75,6 +79,7 @@ public class NythicalSpaceProgram
             ModItemProperties.addCustomItemProperties();
 
             MenuScreens.register(ModMenuTypes.MAGNETIZER_MENU.get(), MagnetizerScreen::new);
+            MenuScreens.register(ModMenuTypes.CRYOGENIC_AIR_SEPARATOR_MENU.get(), CryogenicAirSeparatorScreen::new);
         }
     }
 }

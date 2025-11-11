@@ -22,12 +22,12 @@ public class MagnetizerMenu extends AbstractContainerMenu {
     public MagnetizerMenu(int pContainerId, Inventory inventory, FriendlyByteBuf extraData) {
         this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
     }
-    public MagnetizerMenu(int pContainerId, Inventory inventory, BlockEntity entity, ContainerData data) {
+    public MagnetizerMenu(int pContainerId, Inventory inventory, BlockEntity entity, ContainerData simpleContainerData) {
         super(ModMenuTypes.MAGNETIZER_MENU.get(), pContainerId);
         checkContainerSize(inventory, 2);
         blockEntity = ((MagnetizerEntity) entity);
         this.level = inventory.player.level();
-        this.data = data;
+        this.data = simpleContainerData;
 
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);
@@ -71,7 +71,7 @@ public class MagnetizerMenu extends AbstractContainerMenu {
     public int getMaxEnergy() {
         return this.data.get(3);
     }
-        // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
+    // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
     // For this container, we can see both the tile inventory's slots as well as the player inventory slots and the hotbar.
     // Each time we add a Slot to the container, it automatically increases the slotIndex, which means

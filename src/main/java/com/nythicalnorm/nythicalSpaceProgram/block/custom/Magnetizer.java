@@ -56,6 +56,11 @@ public class Magnetizer extends BaseEntityBlock  {
     }
 
     @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
+        return new MagnetizerEntity(blockPos, blockState);
+    }
+
+    @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
@@ -67,11 +72,6 @@ public class Magnetizer extends BaseEntityBlock  {
         }
 
         return InteractionResult.sidedSuccess(pLevel.isClientSide());
-    }
-
-    @Override
-    public @Nullable BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return new MagnetizerEntity(blockPos, blockState);
     }
 
     @Override

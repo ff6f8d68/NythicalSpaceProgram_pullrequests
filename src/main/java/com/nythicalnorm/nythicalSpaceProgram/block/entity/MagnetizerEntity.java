@@ -43,9 +43,7 @@ public class MagnetizerEntity extends BlockEntity implements MenuProvider {
 
         @Override
         protected void onContentsChanged(int slot) {
-            if (!level.isClientSide()) {
-                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-            }
+            MagnetizerEntity.this.updateBlock();
         }
     };
 
@@ -53,9 +51,7 @@ public class MagnetizerEntity extends BlockEntity implements MenuProvider {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
-            if(!level.isClientSide()) {
-                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-            }
+            MagnetizerEntity.this.updateBlock();
         }
 
         @Override
@@ -129,9 +125,19 @@ public class MagnetizerEntity extends BlockEntity implements MenuProvider {
     private void setIsCrafting(boolean setValue) {
         if (isCrafting != setValue) {
             isCrafting = setValue;
+            updateBlock();
+        }
+    }
+
+    public void updateBlock(){
+        if (level == null){
+            return;
+        }
+        else if (!level.isClientSide()) {
             level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
         }
     }
+
 
     public float getMagnetTableYrot() {
         return magnetTableYrot;
@@ -151,6 +157,7 @@ public class MagnetizerEntity extends BlockEntity implements MenuProvider {
                 return lazyInputItemHandler.cast();
             }
         }
+
         else if (cap == ForgeCapabilities.ENERGY) {
             return this.energyStorageLazyOptional.cast();
         }
@@ -194,7 +201,7 @@ public class MagnetizerEntity extends BlockEntity implements MenuProvider {
         return new MagnetizerMenu(ContainerId, inventory, this, this.data);
     }
 
-    public  <T> LazyOptional<T> getSlotForDisplay(int id) {
+    public <T> LazyOptional<T> getSlotForDisplay(int id) {
         if (id == 0) {
             return lazyInputItemHandler.cast();
         }
@@ -215,7 +222,7 @@ public class MagnetizerEntity extends BlockEntity implements MenuProvider {
 
     @Override
     public void load(CompoundTag pTag) {
-        if (!pTag.contains("inventoryIn") || !pTag.contains("inventoryOut") || !pTag.contains("magnetizer.energyStorage") || !pTag.contains("magnetizer.progress")) {
+        if (!pTag.contains("inventoryIn") || !pTag.contains("inventoryOut") || !pTag.contains("magnetizer.energyStorage") || !pTag.contains("magnetizer.progress") || !pTag.contains("magnetizer.crafting")) {
             NythicalSpaceProgram.LOGGER.error("Expected NBT tag is missing.");
             return;
         }
@@ -229,6 +236,10 @@ public class MagnetizerEntity extends BlockEntity implements MenuProvider {
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
+        if (this.level == null || this.level.isClientSide()) {
+            return;
+        }
+
         if (hasRecipe()) {
             setIsCrafting(true);
             if (energyStorage.ConsumeEnergy(20)) {

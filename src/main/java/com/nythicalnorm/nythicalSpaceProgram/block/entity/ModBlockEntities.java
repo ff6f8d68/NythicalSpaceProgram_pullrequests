@@ -16,7 +16,11 @@ public class ModBlockEntities {
              BLOCK_ENTITIES.register("magnetizer_be", () ->
                      BlockEntityType.Builder.of(MagnetizerEntity::new, ModBlocks.MAGNETIZER.get()).build(null));
 
-     public static void register(IEventBus eventBus) {
+    public static final RegistryObject<BlockEntityType<CryogenicAirSeparatorEntity>> CRYOGENIC_AIR_SEPARATOR_BE =
+            BLOCK_ENTITIES.register("cryogenic_air_separator_be", () ->
+                    BlockEntityType.Builder.of(CryogenicAirSeparatorEntity::new, ModBlocks.CRYOGENIC_AIR_SEPARATOR.get()).build(null));
+
+    public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
      }
 }

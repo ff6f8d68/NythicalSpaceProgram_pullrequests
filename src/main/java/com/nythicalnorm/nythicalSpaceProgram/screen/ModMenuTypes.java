@@ -17,6 +17,10 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<MagnetizerMenu>> MAGNETIZER_MENU =
             registerMenuTypes("magnetizer_menu", MagnetizerMenu::new);
 
+    public static final RegistryObject<MenuType<CryogenicAirSeparatorMenu>> CRYOGENIC_AIR_SEPARATOR_MENU =
+            registerMenuTypes("cryogenic_air_separator_menu", CryogenicAirSeparatorMenu::new);
+
+
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuTypes(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));
     }
