@@ -23,6 +23,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.CRYOGENIC_AIR_SEPARATOR.get());
         this.dropSelf(ModBlocks.MAGNETIZER.get());
         this.dropOther(ModFluids.LIQUID_OXYGEN.block.get(), Blocks.AIR);
+        this.dropSelf(ModBlocks.CRYOGENIC_AIR_SEPARATOR_PART.get());
     }
 
     @Override
