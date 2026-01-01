@@ -3,7 +3,7 @@ package com.nythicalnorm.nythicalSpaceProgram.datagen;
 import com.nythicalnorm.nythicalSpaceProgram.NythicalSpaceProgram;
 import com.nythicalnorm.nythicalSpaceProgram.block.NSPBlocks;
 import com.nythicalnorm.nythicalSpaceProgram.fluid.NSPFluids;
-import com.nythicalnorm.nythicalSpaceProgram.block.world.FootprintedType;
+import com.nythicalnorm.nythicalSpaceProgram.block.terrain.FootprintedType;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -16,7 +16,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
-import static com.nythicalnorm.nythicalSpaceProgram.block.world.FootprintedRegolith.FOOTPRINTTYPE;
+import static com.nythicalnorm.nythicalSpaceProgram.block.terrain.FootprintedRegolith.FOOTPRINTTYPE;
 
 public class NSPBlockStateProvider extends BlockStateProvider {
     public NSPBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {

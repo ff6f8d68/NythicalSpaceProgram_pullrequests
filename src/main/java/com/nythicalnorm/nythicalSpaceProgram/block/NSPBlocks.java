@@ -5,7 +5,7 @@ import com.nythicalnorm.nythicalSpaceProgram.NythicalSpaceProgram;
 import com.nythicalnorm.nythicalSpaceProgram.block.gse.VehicleAssembler;
 import com.nythicalnorm.nythicalSpaceProgram.block.gse.PlatformAssembly;
 import com.nythicalnorm.nythicalSpaceProgram.block.manufacturing.CryogenicAirSeparator;
-import com.nythicalnorm.nythicalSpaceProgram.block.world.FootprintedRegolith;
+import com.nythicalnorm.nythicalSpaceProgram.block.terrain.FootprintedRegolith;
 import com.nythicalnorm.nythicalSpaceProgram.block.manufacturing.Magnetizer;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;

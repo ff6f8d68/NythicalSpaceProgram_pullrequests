@@ -1,5 +1,6 @@
 package com.nythicalnorm.nythicalSpaceProgram.block.gse.entity;
 
+import com.nythicalnorm.nythicalSpaceProgram.block.BlockFindingStorage;
 import com.nythicalnorm.nythicalSpaceProgram.block.gse.screen.VehicleAssemblerMenu;
 import com.nythicalnorm.nythicalSpaceProgram.block.manufacturing.entity.NSPBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -13,15 +14,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class VehicleAssemblerEntity extends BlockEntity implements MenuProvider {
     public VehicleAssemblerEntity( BlockPos pPos, BlockState pBlockState) {
         super(NSPBlockEntities.VEHICLE_ASSEMBLER_BE.get(), pPos, pBlockState);
     }
-
-    List<BlockPos> platformList = new ArrayList<>();
 
     @Override
     public @NotNull Component getDisplayName() {
@@ -33,11 +29,28 @@ public class VehicleAssemblerEntity extends BlockEntity implements MenuProvider 
         return new VehicleAssemblerMenu(pContainerId,this);
     }
 
-    public void removePlatformRef(BlockPos blockPos) {
-        platformList.remove(blockPos);
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        if (this.level != null) {
+            if (!this.level.isClientSide()) {
+                BlockFindingStorage.makeBlockEntityFindable(getBlockPos(), level);
+            }
+        }
+        recalculateBoundingBox();
     }
 
-    public void addPlatformRef(BlockPos pPos) {
-        platformList.add(pPos);
+    @Override
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        if (this.level != null) {
+            if (!this.level.isClientSide()) {
+                BlockFindingStorage.destroyBlockEntityFindable(getBlockPos(), level);
+            }
+        }
+    }
+
+    public void recalculateBoundingBox() {
+        float x = 1;
     }
 }

@@ -1,4 +1,4 @@
-package com.nythicalnorm.nythicalSpaceProgram.block.world;
+package com.nythicalnorm.nythicalSpaceProgram.block.terrain;
 
 import net.minecraft.util.StringRepresentable;
 import org.jetbrains.annotations.NotNull;
